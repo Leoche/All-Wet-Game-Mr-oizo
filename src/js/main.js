@@ -57,7 +57,7 @@ var AllWet = function(containerId, elemsClass){
 					   });
 				that.map[move.x][move.y] = $(this);
 				if(that.soundEnabled){
-					var num = Math.floor(Math.random()*9)+1; // 1 or 2
+					var num = Math.floor(Math.random()*9)+1; 
 					that.playSound("sounds/"+num+".wav")
 				}
 				if(that.isWinnable && that.isWin()){
@@ -68,7 +68,7 @@ var AllWet = function(containerId, elemsClass){
 						that.container.removeClass("win");
 						that.UIEnabled = true;
 						that.isWinnable = false;
-					},7000);
+					},7000); //Victory sound last ~7sec
 				}
 			}
 		});
