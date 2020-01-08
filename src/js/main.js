@@ -14,6 +14,8 @@ var AllWet = function(containerId, elemsClass){
 		this.initMap();
 		this.initUI();
 		this.isWin();
+		var that = this;
+		window.AllWetInstance = this;
 	}
 	this.initMap = function(){
 		for(var h = 0; h < 4; h++)
@@ -84,11 +86,16 @@ var AllWet = function(containerId, elemsClass){
 		return win;
 	}
 	this.shuffle = function(){
-		this.soundEnabled = false;
+		var that = this;
 		for(var i = 0; i< Math.floor(Math.random()*50)+50; i++)
-			this.getRandomMovableTiles().click();
-		this.isWinnable = true;
-		this.soundEnabled = true;
+			setTimeout(function(){
+				that.isWinnable = false;
+				that.soundEnabled = false;
+				that.getRandomMovableTiles().click();
+				that.soundEnabled = true;
+				that.isWinnable = true;
+			}, i*40);
+		
 	}
 	this.getRandomMovableTiles = function(){
 		var movables = this.getMovableTiles();
